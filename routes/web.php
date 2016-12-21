@@ -1,5 +1,5 @@
 <?php
-
+define('ROUTE_BASE','drinkshop/public');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// show homepage (include header, sidebar, context or else)
+Route::get(ROUTE_BASE . '/homepage', 'HomeController@show');
 
-Route::get('homepage', 'HomeController@index');
+// new account page
+Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');

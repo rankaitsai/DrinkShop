@@ -1,16 +1,24 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
-/**
- * 
- */
-class HomeController extends BaseController {
+class HomeController extends Controller
+{
+    // controls the homepage button or else element
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        return view('layouts.master');
+    }
 
-	public function index()
-	{
-		return view('home');
-	}
+    public function signUp()
+    {
+        return view('layouts.register');
+    }
 }
