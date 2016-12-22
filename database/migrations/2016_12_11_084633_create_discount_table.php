@@ -14,10 +14,10 @@ class CreateDiscountTable extends Migration
     public function up()
     {
         Schema::create('discount', function (Blueprint $table) {
-            $table->increments('DiscountId');
+            $table->increments('discountId');
             $table->string('type');
-            $table->datetime('Start_Date');
-            $table->datetime('End_Date');
+            $table->datetime('start_Date');
+            $table->datetime('end_Date');
         });
     }
 

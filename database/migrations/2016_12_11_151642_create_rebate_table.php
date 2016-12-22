@@ -14,11 +14,11 @@ class CreateRebateTable extends Migration
     public function up()
     {
         Schema::create('rebate', function (Blueprint $table) {
-            $table->integer('DiscountId')->unsigned();
-            $table->foreign('DiscountId')->references('DiscountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('OrderListId')->unsigned();
-            $table->foreign('OrderListId')->references('Id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
-            $table->primary(['DiscountId','OrderListId']);
+            $table->integer('discountId')->unsigned();
+            $table->foreign('discountId')->references('DiscountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('orderListId')->unsigned();
+            $table->foreign('orderListId')->references('Id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary(['discountId','orderListId']);
         });
     }
 

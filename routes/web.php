@@ -15,4 +15,10 @@ define('ROUTE_BASE','drinkshop/public');
 Route::get(ROUTE_BASE . '/homepage', 'HomeController@show');
 
 // new account page
+//Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');
+
+Route::get(ROUTE_BASE . '/homepage/login', 'Auth\LoginController@show');
+
 Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');
+
+Route::post('createMember', 'Auth\LoginController@signUp');

@@ -14,12 +14,12 @@ class CreateOrderItemTable extends Migration
     public function up()
     {
         Schema::create('order_item', function (Blueprint $table) {
-            $table->integer('OrderId')->unsigned();
-            $table->foreign('OrderId')->references('Id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('DrinkId')->unsigned();
-            $table->foreign('DrinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
-            $table->primary(['OrderId','DrinkId']);
-            $table->integer('Quantity');
+            $table->integer('orderId')->unsigned();
+            $table->foreign('orderId')->references('Id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('drinkId')->unsigned();
+            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary(['orderId','drinkId']);
+            $table->integer('quantity');
         });
     }
 

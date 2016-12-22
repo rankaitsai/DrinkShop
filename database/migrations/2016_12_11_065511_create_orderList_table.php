@@ -14,14 +14,14 @@ class CreateOrderListTable extends Migration
     public function up()
     {
         Schema::create('order_list', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->integer('MemberId')->unsigned();
-            $table->foreign('MemberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('DrinkName',10);
-            $table->integer('DrinkPrice');
-            $table->datetime('Date');
-            $table->string('State');
-            $table->integer('Cost');
+            $table->increments('id');
+            $table->integer('memberId')->unsigned();
+            $table->foreign('memberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('drinkName');
+            $table->integer('drinkPrice');
+            $table->datetime('date');
+            $table->string('state');
+            $table->integer('cost');
         });
     }
 

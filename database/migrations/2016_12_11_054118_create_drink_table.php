@@ -14,10 +14,10 @@ class CreateDrinkTable extends Migration
     public function up()
     {
         Schema::create('drink', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Name',10);
-            $table->integer('Price');
-            $table->string('Description');
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('price');
+            $table->string('description');
         });
     }
 

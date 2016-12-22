@@ -14,12 +14,12 @@ class CreateDrinkInfoTable extends Migration
     public function up()
     {
         Schema::create('drink_info', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->integer('DrinkId')->unsigned();
-            $table->foreign('DrinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('Sugar',2);
-            $table->string('Temperature',2);
-            $table->string('Addition',5)->nullable(true);
+            $table->increments('id');
+            $table->integer('drinkId')->unsigned();
+            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('sugar');
+            $table->string('temperature');
+            $table->string('addition')->nullable(true);
         });
     }
 

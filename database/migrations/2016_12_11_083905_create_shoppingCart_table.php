@@ -14,12 +14,12 @@ class CreateShoppingCartTable extends Migration
     public function up()
     {
         Schema::create('shopping_cart', function (Blueprint $table) {
-            $table->integer('MemberId')->unsigned();
-            $table->foreign('MemberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('DrinkId')->unsigned();
-            $table->foreign('DrinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
-            $table->primary(['MemberId','DrinkId']);
-            $table->integer('Quantity');
+            $table->integer('memberId')->unsigned();
+            $table->foreign('memberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('drinkId')->unsigned();
+            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary(['memberId','drinkId']);
+            $table->integer('quantity');
         });
     }
 

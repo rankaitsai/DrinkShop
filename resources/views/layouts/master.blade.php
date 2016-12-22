@@ -7,4 +7,4 @@
  */
 ?>
 
-@include('layouts.partials.header');
+@include('layouts.partials.header')
