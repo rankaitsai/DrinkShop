@@ -12,7 +12,10 @@ define('ROUTE_BASE','drinkshop/public');
 */
 
 // show homepage (include header, sidebar, context or else)
-Route::get(ROUTE_BASE . '/homepage', 'HomeController@show');
+Route::get(ROUTE_BASE . '/homepage', 'HomeController@showHomepage');
+Route::get(ROUTE_BASE . '/homepage/home', 'HomeController@showHomepage');
+Route::get(ROUTE_BASE . '/homepage/about', 'HomeController@showAbout');
+Route::get(ROUTE_BASE . '/homepage/menu', 'HomeController@showMenu');
 
 // new account page
 Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');

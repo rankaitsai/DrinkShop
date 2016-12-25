@@ -14,13 +14,13 @@
     {{--according to views/.../--}}
     <title>DrinkShop</title>
     <link rel="stylesheet" type="text/css" href="{{asset('DrinkShop/public/css/header.css')}}">
-    @include('layouts.partials.linkcdn')
+    @include('layouts.partials.linkCDN')
 </head>
 <body data-target = "#navbar-spy" data-spy = "scroll">
     <nav class="nav navbar-default navbar-fixed-top" id = "navbar-spy">    <!-- navbar-fixed-bottom為固定在網頁上不會因為滾動而消失 -->
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{action('HomeController@show')}}">DrinkShop 飲料店系統</a>
+                <a class="navbar-brand" href="{{action('HomeController@showHomepage')}}">DrinkShop</a>
             </div>
             <div class = "collapse navbar-collapse" id="myNavbar">    <!-- 底下放要縮放的內容 -->
                 <ul class="nav navbar-nav navbar-right">

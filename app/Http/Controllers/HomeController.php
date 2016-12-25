@@ -12,9 +12,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function showHomepage()
     {
-        return view('layouts.master');
+        return view('layouts.pages.home');
+    }
+
+    public function showAbout()
+    {
+        return view('layouts.pages.about');
+    }
+
+    public function showMenu()
+    {
+        return view('layouts.pages.menu');
     }
 
     public function signUp()
