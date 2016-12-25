@@ -20,7 +20,7 @@
             <div class="top">
                 <h3>註冊新帳號</h3>
             </div>
-            <form action="createMember" method="post" class = "form-horizontal" enctype="multipart/form-data">
+            <form action="registerMessage" method="post" class = "form-horizontal" enctype="multipart/form-data">
                 <div class = "form-group">
                     <label for="account" class="col-sm-4 control-label"><span style="color:red">*</span>帳號：</label>
                     <div class="col-sm-6">
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label for="password" class="col-sm-4 control-label"><span style="color:red">*</span>密碼：</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="Enter your password" name="password" />
+                        <input type="password" class="form-control" placeholder="Enter your password" name="password" />
                     </div>
                 </div>
 
@@ -76,9 +76,20 @@
                 <div class="form-group">
                     <label for="photo" class="col-sm-4 control-label">Photo：</label>
                     <div class="col-sm-6">
-                        <input type="file" name="photo"/>
+                        {{--只能輸入圖片--}}
+                        <input type="file" name="photo" accept=".png .jpg .jpeg" />
                     </div>
                 </div>
+
+                @if(count($errors) > 0)
+                    <div class="error">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li class="list-group-item list-group-item-danger"><strong>{{ $error }}</strong></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="button">
                     <input type="submit" name="button" id="button" value="送出" class="btn"/>

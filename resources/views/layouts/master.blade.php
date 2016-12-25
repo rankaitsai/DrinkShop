@@ -7,4 +7,5 @@
  */
 ?>
 
+<!--/homepage-->
 @include('layouts.partials.header')

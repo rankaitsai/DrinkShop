@@ -20,12 +20,12 @@
     <nav class="nav navbar-default navbar-fixed-top" id = "navbar-spy">    <!-- navbar-fixed-bottom為固定在網頁上不會因為滾動而消失 -->
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">DrinkShop</a>
+                <a class="navbar-brand" href="{{action('HomeController@show')}}">DrinkShop 飲料店系統</a>
             </div>
             <div class = "collapse navbar-collapse" id="myNavbar">    <!-- 底下放要縮放的內容 -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a data-toggle="tab" href="#"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>
-                    <li><a data-toggle="tab" href="#"><span class="glyphicon glyphicon-user"></span><strong>Sign up</strong></a></li>
+                    <li><a href="{{ action('HomeController@logIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>
+                    <li><a href="{{ action('HomeController@signUp') }}"><span class="glyphicon glyphicon-user"></span><strong>Sign up</strong></a></li>
                 </ul>
             </div>
         </div>

@@ -26,3 +26,12 @@
     font-family:微軟正黑體;
     font-size:20px;
 }
+
+.error{
+    font-size: 16px;
+    color: #FF0000;
+}
+
+.list-group-item list-group-item-danger{
+    margin-left: 0px;
+}

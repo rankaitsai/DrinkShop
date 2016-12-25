@@ -15,10 +15,15 @@ define('ROUTE_BASE','drinkshop/public');
 Route::get(ROUTE_BASE . '/homepage', 'HomeController@show');
 
 // new account page
-//Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');
-
-Route::get(ROUTE_BASE . '/homepage/login', 'Auth\LoginController@show');
-
 Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');
 
-Route::post('createMember', 'Auth\LoginController@signUp');
+// route 不能有衝突
+Route::get(ROUTE_BASE . '/homepage/login', 'HomeController@logIn');
+
+//Route::get(ROUTE_BASE . '/homepage/login', 'Auth\LoginController@logIn');
+
+// createMember associated with register.blade.php form "action"
+Route::post(ROUTE_BASE . '/homepage/registerMessage', 'Auth\LoginController@signUp');
+
+// correct account and password
+Route::post(ROUTE_BASE . '/homepage/success', 'Auth\LoginController@logIn');
