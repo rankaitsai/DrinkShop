@@ -38,6 +38,11 @@
                         {{--<li>--}}
                             {{--<a href="#panel-345213" data-toggle="tab">購物車</a>--}}
                         {{--</li>--}}
+                        @if(\Illuminate\Support\Facades\Session::get('valid') == 'success')
+                            <li>
+                                <a href="{{action("HomeController@showMenu")}}">當登入後就會產生</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

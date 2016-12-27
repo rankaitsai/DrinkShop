@@ -24,8 +24,8 @@
             </div>
             <div class = "collapse navbar-collapse" id="myNavbar">    <!-- 底下放要縮放的內容 -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ action('HomeController@logIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>
-                    <li><a href="{{ action('HomeController@signUp') }}"><span class="glyphicon glyphicon-user"></span><strong>Sign up</strong></a></li>
+                    <li><a href="{{ action('LoginController@showLogIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>
+                    <li><a href="{{ action('RegisterController@showSignUp') }}"><span class="glyphicon glyphicon-user"></span><strong>Sign up</strong></a></li>
                 </ul>
             </div>
         </div>

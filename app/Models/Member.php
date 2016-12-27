@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\ShoppingCart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
 
@@ -19,5 +20,32 @@ class Member extends Model
             return '成功註冊';
         }
         return '請輸入必填選項';
+    }
+    /*
+     * ORM object relational mapping
+     */
+    public function orderList()
+    {
+        return $this->hasMany('OrderList');
+    }
+
+    public function comment()
+    {
+        return $this->belongsToMany('Drink','Comment');
+    }
+
+    public function trace()
+    {
+        return $this->belongsToMany('Drink','Trace');
+    }
+
+    public function shoppingCart()
+    {
+        return $this->belongsToMany('Drink','ShoppingCart');
+    }
+
+    public function historyExplore()
+    {
+        return $this->belongsToMany('Drink','HistoryExplore');
     }
 }

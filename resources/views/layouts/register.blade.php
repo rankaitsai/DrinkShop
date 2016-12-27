@@ -82,13 +82,17 @@
                 </div>
 
                 @if(count($errors) > 0)
-                    <div class="error">
+                    <div class="alert alert-danger">
                         <ul>
                             @foreach($errors->all() as $error)
-                                <li class="list-group-item list-group-item-danger"><strong>{{ $error }}</strong></li>
+                                <li><strong>{{ $error }}</strong></li>
                             @endforeach
                         </ul>
                     </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::has('state'))
+                    <p class="bg-success" style="text-align: center;">{{\Illuminate\Support\Facades\Session::get('state')}}</p>
                 @endif
 
                 <div class="button">

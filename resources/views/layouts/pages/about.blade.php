@@ -18,10 +18,18 @@
 </head>
 <body>
     @section('sidebar')
-        <h1 id="par-1">par-1</h1>
-        <h2 id="sub-par-1-1">sub-par-1-1</h2>
-        <p></p>
-        <h2 id="sub-par-1-2">sub-par-1-2</h2>
+        <span class="list-group-item active" data-toggle="tab">關於我們</span>
+        <a href="#contactUs" class="list-group-item" data-toggle="tab">聯絡我們</a>
+        <a href="#test" class="list-group-item" data-toggle="tab">測試用</a>
+    @endsection
+
+    @section('contents')
+        <div id="contactUs" class="tab-pane fade in active">
+            <h3>聯絡我們</h3>
+        </div>
+        <div id="test" class="tab-pane fade">
+            <h3>測試用</h3>
+        </div>
     @endsection
 </body>
 </html>

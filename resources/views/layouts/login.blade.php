@@ -20,7 +20,7 @@
             <div class="top">
                 <h3>登入</h3>
             </div>
-            <form action="success" method="post" class = "form-horizontal" enctype="multipart/form-data">
+            <form action="" method="post" class = "form-horizontal" enctype="multipart/form-data">
                 <div class = "form-group">
                     <label for="account" class="col-sm-4 control-label"><span style="color:red">*</span>帳號：</label>
                     <div class="col-sm-6">
@@ -43,6 +43,16 @@
                             @endforeach
                         </ul>
                     </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::get('validate') == 'success')
+                    <p style="text-align: center" class="bg-success">成功登入</p>
+
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::get('validate') == 'failed')
+                    <p style="text-align: center" class="bg-danger">登入失敗</p>
+                    {{\Illuminate\Support\Facades\Session::flush()}}
                 @endif
 
                 <div class="button">

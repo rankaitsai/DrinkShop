@@ -17,16 +17,14 @@ Route::get(ROUTE_BASE . '/homepage/home', 'HomeController@showHomepage');
 Route::get(ROUTE_BASE . '/homepage/about', 'HomeController@showAbout');
 Route::get(ROUTE_BASE . '/homepage/menu', 'HomeController@showMenu');
 
+
 // new account page
-Route::get(ROUTE_BASE . '/homepage/signup', 'HomeController@signUp');
+Route::get(ROUTE_BASE . '/homepage/signup', 'RegisterController@showSignUp');
+// createMember associated with register.blade.php form "action"
+Route::post(ROUTE_BASE . '/homepage/registerMessage', 'RegisterController@signUp');
+
 
 // route 不能有衝突
-Route::get(ROUTE_BASE . '/homepage/login', 'HomeController@logIn');
-
-//Route::get(ROUTE_BASE . '/homepage/login', 'Auth\LoginController@logIn');
-
-// createMember associated with register.blade.php form "action"
-Route::post(ROUTE_BASE . '/homepage/registerMessage', 'Auth\LoginController@signUp');
-
+Route::get(ROUTE_BASE . '/homepage/login', 'LoginController@showLogIn');
 // correct account and password
-Route::post(ROUTE_BASE . '/homepage/success', 'Auth\LoginController@logIn');
+Route::post(ROUTE_BASE . '/homepage/login', 'LoginController@logIn');
