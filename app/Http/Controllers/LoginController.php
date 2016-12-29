@@ -45,19 +45,26 @@ class LoginController extends Controller
     // return login page
     public function showLogin()
     {
+        if(Session::get('validate') == 'success')
+        {
+            return '已登入';
+        }
         return view('layouts.login');
     }
 
-    public function logIn(LoginRequest $request)
+    public function getLogin(LoginRequest $request)
     {
         $correct = Member::where('account','=',Input::get('account'))->where('password','=',Input::get('password'))->first();
 
         if ($correct) {
+            $account = Input::get('account');
             Session::put('validate','success');
-            return redirect()->back();
+            //Session::save();
+            return redirect('drinkshop/public/homepage/home')->with($account);
         }
         else {
             Session::put('validate','failed');
+            //Session::save();
             return redirect()->back();
         }
     }

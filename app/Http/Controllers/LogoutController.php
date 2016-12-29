@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Session;
 
 class LogoutController extends Controller
 {
-    public function signOut()
+    public function getLogout()
     {
         Session::flush();
+        return redirect()->back();
     }
 }

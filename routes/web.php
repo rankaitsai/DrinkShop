@@ -12,19 +12,23 @@ define('ROUTE_BASE','drinkshop/public');
 */
 
 // show homepage (include header, sidebar, context or else)
-Route::get(ROUTE_BASE . '/homepage', 'HomeController@showHomepage');
-Route::get(ROUTE_BASE . '/homepage/home', 'HomeController@showHomepage');
-Route::get(ROUTE_BASE . '/homepage/about', 'HomeController@showAbout');
-Route::get(ROUTE_BASE . '/homepage/menu', 'HomeController@showMenu');
+Route::group(['middleware' => ['web']], function() {
+    Route::get(ROUTE_BASE . '/homepage', 'HomeController@showHomepage');
+    Route::get(ROUTE_BASE . '/homepage/home', 'HomeController@showHomepage');
+    Route::get(ROUTE_BASE . '/homepage/about', 'HomeController@showAbout');
+    Route::get(ROUTE_BASE . '/homepage/menu', 'HomeController@showMenu');
 
 
 // new account page
-Route::get(ROUTE_BASE . '/homepage/signup', 'RegisterController@showSignUp');
+    Route::get(ROUTE_BASE . '/homepage/signup', 'RegisterController@showSignUp');
 // createMember associated with register.blade.php form "action"
-Route::post(ROUTE_BASE . '/homepage/registerMessage', 'RegisterController@signUp');
+    Route::post(ROUTE_BASE . '/homepage/registerMessage', 'RegisterController@signUp');
 
 
 // route 不能有衝突
-Route::get(ROUTE_BASE . '/homepage/login', 'LoginController@showLogIn');
+    Route::get(ROUTE_BASE . '/homepage/login', 'LoginController@showLogIn');
 // correct account and password
-Route::post(ROUTE_BASE . '/homepage/login', 'LoginController@logIn');
+    Route::post(ROUTE_BASE . '/homepage/login', 'LoginController@getLogin');
+
+    Route::get(ROUTE_BASE . '/homepage', 'LogoutController@getLogout');
+});

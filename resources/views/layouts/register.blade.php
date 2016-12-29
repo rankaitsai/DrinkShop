@@ -13,14 +13,35 @@
         <meta charset="UTF-8">
         <title>註冊新帳號</title>
         <link rel="stylesheet" href="{{asset('DrinkShop/public/css/register.css')}}">
+        @include('layouts.partials.linkCDN')
     </head>
     <body>
+        {{var_dump(\Illuminate\Support\Facades\Session::all())}}
         @include('layouts.partials.header')
+        {{--@section('loginState')--}}
+            {{--@if (\Illuminate\Support\Facades\Session::get('validate') == 'success')--}}
+                {{--<li class="dropdown">--}}
+                    {{--<a href="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
+                        {{--<strong>Register成功</strong><span class="caret"></span>--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">--}}
+                        {{--<li><a href="#">Profiles</a></li>--}}
+                        {{--<li><a href="#">Settings</a></li>--}}
+                        {{--<li><a href="{{ \Illuminate\Support\Facades\Session::flush() }}">Log out</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                {{--{{\Illuminate\Support\Facades\Session::put('validate','success')}}--}}
+            {{--@else--}}
+                {{--<li><a href="{{ action('LoginController@showLogIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>--}}
+            {{--@endif--}}
+        {{--@stop--}}
+
         <div class="package">
             <div class="top">
                 <h3>註冊新帳號</h3>
             </div>
             <form action="registerMessage" method="post" class = "form-horizontal" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class = "form-group">
                     <label for="account" class="col-sm-4 control-label"><span style="color:red">*</span>帳號：</label>
                     <div class="col-sm-6">
@@ -90,7 +111,6 @@
                         </ul>
                     </div>
                 @endif
-
                 @if(\Illuminate\Support\Facades\Session::has('state'))
                     <p class="bg-success" style="text-align: center;">{{\Illuminate\Support\Facades\Session::get('state')}}</p>
                 @endif
@@ -98,9 +118,8 @@
                 <div class="button">
                     <input type="submit" name="button" id="button" value="送出" class="btn"/>
                 </div>
-
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
         </div>
     </body>
+    {{var_dump(\Illuminate\Support\Facades\Session::all())}}
 </html>

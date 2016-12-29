@@ -17,7 +17,7 @@ class MemberTableSeeder extends Seeder
             'password' => 'rankaitsai',
             'photo' => null,
             'sex' => 'boy',
-            'phone' => '0930052827',
+            'phone' => '0928394857',
             'email' => 'benny85527@gmail.com',
             'address' => 'Taipei'
         ]);

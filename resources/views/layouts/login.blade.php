@@ -7,14 +7,17 @@
  */
 ?>
 
+{{--@extends('layouts.partials.header')--}}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>登入頁面</title>
         <link rel="stylesheet" href="{{asset('DrinkShop/public/css/register.css')}}">
+        @include('layouts.partials.linkCDN')
     </head>
     <body>
+        {{var_dump(\Illuminate\Support\Facades\Session::all())}}
         @include('layouts.partials.header')
         <div class="package">
             <div class="top">
@@ -36,31 +39,31 @@
                 </div>
 
                 @if(count($errors) > 0)
-                    <div class="error">
+                    <div class="alert alert-danger">
                         <ul>
                             @foreach($errors->all() as $error)
-                                <li class="list-group-item list-group-item-danger"><strong>{{ $error }}</strong></li>
+                                <li><strong>{{ $error }}</strong></li>
                             @endforeach
                         </ul>
                     </div>
                 @endif
 
-                @if(\Illuminate\Support\Facades\Session::get('validate') == 'success')
-                    <p style="text-align: center" class="bg-success">成功登入</p>
-
-                @endif
+                {{--@if(\Illuminate\Support\Facades\Session::get('validate') == 'success')--}}
+                    {{--<p style="text-align: center" class="bg-danger">成功登入</p>--}}
+                {{--@endif--}}
 
                 @if(\Illuminate\Support\Facades\Session::get('validate') == 'failed')
                     <p style="text-align: center" class="bg-danger">登入失敗</p>
-                    {{\Illuminate\Support\Facades\Session::flush()}}
+                    {{ \Illuminate\Support\Facades\Session::flush() }}
+                    {{header('Refresh:1')}}
                 @endif
 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="button">
                     <input type="submit" name="button" id="button" value="登入" class="btn"/>
                 </div>
-
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
         </div>
     </body>
+    {{var_dump(\Illuminate\Support\Facades\Session::all())}}
 </html>
