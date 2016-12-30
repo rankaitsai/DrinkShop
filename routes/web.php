@@ -17,18 +17,25 @@ Route::group(['middleware' => ['web']], function() {
     Route::get(ROUTE_BASE . '/homepage/home', 'HomeController@showHomepage');
     Route::get(ROUTE_BASE . '/homepage/about', 'HomeController@showAbout');
     Route::get(ROUTE_BASE . '/homepage/menu', 'HomeController@showMenu');
+    Route::get(ROUTE_BASE . '/homepage/personal', 'HomeController@showPersonal');
 
 
 // new account page
-    Route::get(ROUTE_BASE . '/homepage/signup', 'RegisterController@showSignUp');
+    Route::get(ROUTE_BASE . '/homepage/register', 'RegisterController@showRegister');
 // createMember associated with register.blade.php form "action"
-    Route::post(ROUTE_BASE . '/homepage/registerMessage', 'RegisterController@signUp');
+    Route::post(ROUTE_BASE . '/register', ['uses' =>'RegisterController@getRegister', 'as' => 'register.form']);
 
 
 // route 不能有衝突
+    // url = 接收網址
     Route::get(ROUTE_BASE . '/homepage/login', 'LoginController@showLogIn');
 // correct account and password
-    Route::post(ROUTE_BASE . '/homepage/login', 'LoginController@getLogin');
+    // url = form 送出
+    Route::post(ROUTE_BASE . '/homepage/home', 'LoginController@getLogin');
+
 
     Route::get(ROUTE_BASE . '/homepage', 'LogoutController@getLogout');
+
+
+    Route::get(ROUTE_BASE . '/homepage/menu', 'DrinkController@getAllDrinks');
 });

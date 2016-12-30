@@ -10,7 +10,7 @@
                 @if (\Illuminate\Support\Facades\Session::get('validate') == 'success')
                     <li class="dropdown">
                         <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <strong>account</strong><span class="caret"></span>
+                            <span class="glyphicon glyphicon-user"><strong>{{ Session::get('loginName') }}</strong></span><span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="{{ action('LogoutController@getLogout') }}">Log out</a></li>
@@ -19,7 +19,7 @@
                 @else
                     <li><a href="{{ action('LoginController@showLogIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>
                 @endif
-                <li><a href="{{ action('RegisterController@showSignUp') }}"><span class="glyphicon glyphicon-user"></span><strong>Sign up</strong></a></li>
+                <li><a href="{{ action('RegisterController@showRegister') }}"><span class="glyphicon glyphicon-plus"></span><strong>Sign up</strong></a></li>
             </ul>
         </div>
     </div>

@@ -24,26 +24,6 @@
     </head>
     <body>
     @include('layouts.partials.header')
-    {{--{{var_dump(\Illuminate\Support\Facades\Session::get('validate'))}}--}}
-
-        {{--@section('loginState')--}}
-            {{--@if (\Illuminate\Support\Facades\Session::get('validate') == 'success')--}}
-                {{--<li class="dropdown">--}}
-                    {{--<a href="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
-                        {{--<strong>Home成功</strong><span class="caret"></span>--}}
-                    {{--</a>--}}
-                    {{--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">--}}
-                        {{--<li><a href="#">Profiles</a></li>--}}
-                        {{--<li><a href="#">Settings</a></li>--}}
-                        {{--<li><a href="{{ \Illuminate\Support\Facades\Session::flush() }}">Log out</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-                {{--{{\Illuminate\Support\Facades\Session::put('validate','success')}}--}}
-            {{--@else--}}
-                {{--<li><a href="{{ action('LoginController@showLogIn') }}"><span class="glyphicon glyphicon-log-in"></span><strong>Sign in</strong></a></li>--}}
-            {{--@endif--}}
-        {{--@stop--}}
-
         @include('layouts.partials.navigation')
         {{--sidebar and contents remove to pages/xxx.blade.php--}}
         <div>
@@ -64,9 +44,6 @@
                     @yield('contents')
                 </div>
             </div>
-
         </div>
-
     </body>
-    {{--{{var_dump(\Illuminate\Support\Facades\Session::get('validate'))}}--}}
 </html>

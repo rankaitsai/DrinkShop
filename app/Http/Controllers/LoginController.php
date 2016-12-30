@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 // remember adding this
 use App\Http\Requests\LoginRequest;
 use App\Models\Member;
+use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +32,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/homepage';
-
     /**
      * Create a new controller instance.
      *
@@ -57,10 +57,11 @@ class LoginController extends Controller
         $correct = Member::where('account','=',Input::get('account'))->where('password','=',Input::get('password'))->first();
 
         if ($correct) {
-            $account = Input::get('account');
+            $name = $correct->name;
+            Session::put('loginName',$name);
             Session::put('validate','success');
             //Session::save();
-            return redirect('drinkshop/public/homepage/home')->with($account);
+            return view('layouts.pages.home');
         }
         else {
             Session::put('validate','failed');

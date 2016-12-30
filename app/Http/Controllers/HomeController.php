@@ -28,13 +28,8 @@ class HomeController extends Controller
         return view('layouts.pages.menu');
     }
 
-    public function signUp()
+    public function showPersonal()
     {
-        return view('layouts.register');
-    }
-
-    public function logIn()
-    {
-        return view('layouts.login');
+        return view('layouts.pages.personal');
     }
 }

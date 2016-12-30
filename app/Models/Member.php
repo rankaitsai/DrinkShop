@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\ShoppingCart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
 

@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
-    public function showSignUp()
+    public function showRegister()
     {
         return view('layouts.register');
     }
 
-    public function signUp(MemberRequest $request)
+    public function getRegister(MemberRequest $request)
     {
         // 執行此function會先經過MemberRequest確認輸入資料是否正確
         // 以下能執行代表request已通過

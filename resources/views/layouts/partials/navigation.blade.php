@@ -35,7 +35,7 @@
                     {{--</li>--}}
                     @if(\Illuminate\Support\Facades\Session::get('validate') == 'success')
                         <li>
-                            <a href="{{action("HomeController@showMenu")}}">購物車</a>
+                            <a href="{{ action("HomeController@showPersonal") }}">個人專區</a>
                         </li>
                     @endif
                 </ul>

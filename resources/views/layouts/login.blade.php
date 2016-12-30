@@ -17,13 +17,12 @@
         @include('layouts.partials.linkCDN')
     </head>
     <body>
-        {{var_dump(\Illuminate\Support\Facades\Session::all())}}
         @include('layouts.partials.header')
         <div class="package">
             <div class="top">
                 <h3>登入</h3>
             </div>
-            <form action="" method="post" class = "form-horizontal" enctype="multipart/form-data">
+            <form action="{{ action('LoginController@getLogin') }}" method="post" class = "form-horizontal" enctype="multipart/form-data">
                 <div class = "form-group">
                     <label for="account" class="col-sm-4 control-label"><span style="color:red">*</span>帳號：</label>
                     <div class="col-sm-6">
@@ -55,7 +54,6 @@
                 @if(\Illuminate\Support\Facades\Session::get('validate') == 'failed')
                     <p style="text-align: center" class="bg-danger">登入失敗</p>
                     {{ \Illuminate\Support\Facades\Session::flush() }}
-                    {{header('Refresh:1')}}
                 @endif
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -65,5 +63,4 @@
             </form>
         </div>
     </body>
-    {{var_dump(\Illuminate\Support\Facades\Session::all())}}
 </html>
