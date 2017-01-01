@@ -29,14 +29,15 @@ class Member extends Model
         $this->save();
     }
 
-    public function setDrinksToShoppingCart()
-    {
-        Member::find($this->primaryKey)->shoppingCart()->attach(1);
-    }
+//    public function setDrinksToShoppingCart()
+//    {
+//        $member = Member::find($this->primaryKey);
+//        $member->shoppingCart()->attach(1);
+//    }
 
     public function orderList()
     {
-        return $this->hasMany('OrderList');
+        return $this->hasMany('App\Models\OrderList');
     }
 
     public function comment()
@@ -51,6 +52,7 @@ class Member extends Model
 
     public function shoppingCart()
     {
+        // ('App\Models\Class','table_name','關係的key對應這個class'(member),'關係的key對應另一class'(drink))
         return $this->belongsToMany('App\Models\Drink','shopping_cart','memberId','drinkId')->withPivot('quantity');
     }
 

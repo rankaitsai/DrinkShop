@@ -39,7 +39,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach($id->id as $id)
+                        @foreach($id as $id)
                             <tr>
                                 <td class="hidden-phone">johnny</td>
                                 <td>john</td>
