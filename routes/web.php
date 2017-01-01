@@ -38,4 +38,6 @@ Route::group(['middleware' => ['web']], function() {
 
 
     Route::get(ROUTE_BASE . '/homepage/menu', 'DrinkController@getAllDrinks');
+
+    Route::get(ROUTE_BASE . '/homepage/personal', 'MemberController@addDrinksToShoppingCart');
 });

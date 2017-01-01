@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class OrderList extends Model
 
     public function discount()
     {
-        return $this->belongsToMany('Discount','Rebate');
+        return $this->belongsToMany('App\Models\Discount','Rebate');
     }
 }

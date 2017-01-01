@@ -11,12 +11,12 @@ class Drink extends Model
 
     public function orderList()
     {
-        return $this->belongsToMany('OrderList','OrderItem');
+        return $this->belongsToMany('App\Models\OrderList','OrderItem');
     }
 
     public function drinkInfo()
     {
-        return $this->hasMany('DrinkInfo');
+        return $this->hasMany('App\Models\DrinkInfo');
     }
 
     // 取得全部飲料

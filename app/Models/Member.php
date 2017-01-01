@@ -11,18 +11,29 @@ class Member extends Model
     protected  $table = 'member';
     //protected  $fillable = array['account','password','name','phone','email'];
     public $timestamps = false;
-
-    public function checkNecessary()
-    {
-        if(Input::has('name') && Input::has('account') && Input::has('password') && Input::has('phone') && Input::has('email') && Input::has('address'))
-        {
-            return '成功註冊';
-        }
-        return '請輸入必填選項';
-    }
     /*
      * ORM object relational mapping
      */
+
+    public function register()
+    {
+        $this->name = Input::get('name');
+        $this->account = Input::get('account');
+        $this->password = Input::get('password');
+        $this->photo = Input::file('photo');
+//        $member->photo->move(public_path(). '/', $member->photo->getClientOriginalName());
+        $this->sex = Input::get('sex');
+        $this->phone = Input::get('phone');
+        $this->email = Input::get('email');
+        $this->address = Input::get('address');
+        $this->save();
+    }
+
+    public function setDrinksToShoppingCart()
+    {
+        Member::find($this->primaryKey)->shoppingCart()->attach(1);
+    }
+
     public function orderList()
     {
         return $this->hasMany('OrderList');
@@ -30,21 +41,21 @@ class Member extends Model
 
     public function comment()
     {
-        return $this->belongsToMany('Drink','Comment');
+        return $this->belongsToMany('App\Models\Drink','Comment');
     }
 
     public function trace()
     {
-        return $this->belongsToMany('Drink','Trace');
+        return $this->belongsToMany('App\Models\Drink','Trace');
     }
 
     public function shoppingCart()
     {
-        return $this->belongsToMany('Drink','ShoppingCart');
+        return $this->belongsToMany('App\Models\Drink','shopping_cart','memberId','drinkId')->withPivot('quantity');
     }
 
     public function historyExplore()
     {
-        return $this->belongsToMany('Drink','HistoryExplore');
+        return $this->belongsToMany('App\Models\Drink','HistoryExplore');
     }
 }

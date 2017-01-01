@@ -58,7 +58,9 @@ class LoginController extends Controller
 
         if ($correct) {
             $name = $correct->name;
+            $id = $correct->id;
             Session::put('loginName',$name);
+            Session::put('loginId', $id);
             Session::put('validate','success');
             //Session::save();
             return view('layouts.pages.home');

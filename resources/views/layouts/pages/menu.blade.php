@@ -18,7 +18,6 @@
     @section('title','飲料清單')
 </head>
 <body>
-    <div class="heart" style="height: 70px; width: 70px;">&#9829</div>
     @section('sidebar')
         <span class="list-group-item active">茶水飲品</span>
         <a href="#newDrink" class="list-group-item" data-toggle="tab">最新商品</a>
@@ -39,64 +38,30 @@
             <h3>飲料清單</h3>
             <div class="row">
                 @foreach($drinks as $drink)
+                    {{--row的第一筆資料--}}
+                    {{--row的第二筆資料--}}
+                    {{--row的第三筆資料--}}
+                    {{--...--}}
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
                             {{--圖片要放入public裡面因為要從檔案載入到網頁--}}
-                                <img src="../images/drinkNine.jpg" alt="">
+                                <img src="{{ $drink->image }}" alt="" style="height: 152px; width: 130px;">
                                 <div class="caption">
                                     <h4><strong>{{ $drink->name }}</strong></h4>
                                     <p>{{ $drink->description }}</p>
                                     <p>
-                                        <a href="#" class="btn btn-default" role="button" style="color: red; font-size: 18px">&#9825</a>
-                                        <a href="#" class="btn btn-primary" role="button">購買({{$drink->price}})</a>
-                                        <a href="#" class="btn btn-default" role="button">加入購物車</a>
+                                        @if(\Illuminate\Support\Facades\Session::get('validate') == 'success')
+                                            <a href="#" class="btn btn-default" role="button" style="color: red; font-size: 18px">&#9825</a>
+                                            <a href="#" class="btn btn-primary" role="button">購買({{$drink->price}})</a>
+                                            <a href="{{ action('MemberController@addDrinksToShoppingCart') }}" class="btn btn-default" role="button">加入購物車</a>
+                                        @else
+                                            <a href="{{ action('LoginController@showLogIn') }}" style="color: red;">購買前請先登入</a>
+                                        @endif
                                     </p>
                                 </div>
                         </div>
                     </div>
                 @endforeach
-                {{--row的第一筆資料--}}
-                {{--<div class="col-sm-6 col-md-4">--}}
-                    {{--<div class="thumbnail">--}}
-                        {{--圖片要放入public裡面因為要從檔案載入到網頁--}}
-                        {{--<img src="../images/drinkOne.jpg" alt="">--}}
-                        {{--<div class="caption">--}}
-                            {{--<h4><strong>珍珠奶茶</strong></h4>--}}
-                            {{--<p>--}}
-                                {{--<a href="#" class="btn btn-primary" role="button">詳細資料</a>--}}
-                                {{--<a href="#" class="btn btn-default" role="button">加入購物車</a>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--row的第二筆資料--}}
-                {{--<div class="col-sm-6 col-md-4">--}}
-                    {{--<div class="thumbnail">--}}
-                        {{--圖片要放入public裡面因為要從檔案載入到網頁--}}
-                        {{--<img src="../images/drinkTwo.jpg" alt="">--}}
-                        {{--<div class="caption">--}}
-                            {{--<h4><strong>抹茶鮮奶</strong></h4>--}}
-                            {{--<p>--}}
-                                {{--<a href="#" class="btn btn-primary" role="button">詳細資料</a>--}}
-                                {{--<a href="#" class="btn btn-default" role="button">加入購物車</a>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--row的第三筆資料--}}
-                {{--<div class="col-sm-6 col-md-4">--}}
-                    {{--<div class="thumbnail">--}}
-                        {{--圖片要放入public裡面因為要從檔案載入到網頁--}}
-                        {{--<img src="../images/drinkThree.jpg" alt="">--}}
-                        {{--<div class="caption">--}}
-                            {{--<h4><strong>番茄梅子</strong></h4>--}}
-                            {{--<p>--}}
-                                {{--<a href="#" class="btn btn-primary" role="button">詳細資料</a>--}}
-                                {{--<a href="#" class="btn btn-default" role="button">加入購物車</a>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
     @endsection

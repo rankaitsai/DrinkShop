@@ -27,6 +27,29 @@
     @section('contents')
         <div id="newDrink" class="tab-pane fade in active">
             <h3>購物車</h3>
+            <div class="panel panel-default">
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="hidden-phone">#</th>
+                            <th>飲料名稱</th>
+                            <th>飲料價格</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach($id->id as $id)
+                            <tr>
+                                <td class="hidden-phone">johnny</td>
+                                <td>john</td>
+                                <td>doe</td>
+                                <td><a href="#" class="btn btn-default" role="button">Delete</a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="popularity" class="tab-pane fade">
