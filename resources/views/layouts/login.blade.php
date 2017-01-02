@@ -13,7 +13,7 @@
     <head>
         <meta charset="UTF-8">
         <title>登入頁面</title>
-        <link rel="stylesheet" href="{{asset('DrinkShop/public/css/register.css')}}">
+        <link rel="stylesheet" href="{{asset('DrinkShop/public/css/login.css')}}">
         @include('layouts.partials.linkCDN')
     </head>
     <body>

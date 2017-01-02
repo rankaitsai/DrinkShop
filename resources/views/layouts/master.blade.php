@@ -20,6 +20,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="stylesheet" type="text/css" href="{{asset('DrinkShop/public/css/master.css')}}">
+        @include('layouts.partials.linkCDN')
         <title>@yield('title')</title>
     </head>
     <body>

@@ -10,6 +10,6 @@ class OrderList extends Model
 
     public function discount()
     {
-        return $this->belongsToMany('App\Models\Discount','Rebate');
+        return $this->belongsToMany('App\Models\Discount','rebate','orderListId','discountId');
     }
 }

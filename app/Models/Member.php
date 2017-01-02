@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class Member extends Model
 {
@@ -29,11 +30,25 @@ class Member extends Model
         $this->save();
     }
 
-//    public function setDrinksToShoppingCart()
-//    {
-//        $member = Member::find($this->primaryKey);
-//        $member->shoppingCart()->attach(1);
-//    }
+    public function addDrinkToShoppingCart($drinkId)
+    {
+        $member = Member::find(Session::get('loginId'));
+        $member->shoppingCart()->attach($drinkId);
+    }
+
+    public function deleteDrinkFromShoppingCart($drinkId)
+    {
+        $member = Member::find(Session::get('loginId'));
+        $member->shoppingCart()->detach($drinkId);
+    }
+
+    public function addComment($drinkId)
+    {
+        $drinkComment = new Drink();
+        $member = Member::find(Session::get('loginId'));
+        $member->comment()->attach($drinkId);
+        $drinkComment->addComment();
+    }
 
     public function orderList()
     {
@@ -42,12 +57,12 @@ class Member extends Model
 
     public function comment()
     {
-        return $this->belongsToMany('App\Models\Drink','Comment');
+        return $this->belongsToMany('App\Models\Drink','comment','memberId','drinkId')->wthPivot('date','star','description');
     }
 
     public function trace()
     {
-        return $this->belongsToMany('App\Models\Drink','Trace');
+        return $this->belongsToMany('App\Models\Drink','trace','memberId','drinkId')->withPivot('date');
     }
 
     public function shoppingCart()
@@ -58,6 +73,6 @@ class Member extends Model
 
     public function historyExplore()
     {
-        return $this->belongsToMany('App\Models\Drink','HistoryExplore');
+        return $this->belongsToMany('App\Models\Drink','history_explore','memberId','drinkId');
     }
 }
