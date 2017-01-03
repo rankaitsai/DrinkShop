@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingCart extends Model
 {
@@ -11,6 +13,10 @@ class ShoppingCart extends Model
 
     public function getShoppingCart()
     {
-        return DB::table('shopping_cart')->get();
+        return DB::table('shopping_cart')
+            ->join('member','member.id','=','shopping_cart.memberId')
+            ->join('drink','drink.id','=','shopping_cart.drinkId')
+            ->where('member.id','=',Session::get('loginId'))
+            ->get();
     }
 }

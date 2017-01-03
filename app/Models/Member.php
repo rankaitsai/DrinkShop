@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -41,13 +42,25 @@ class Member extends Model
         $member->shoppingCart()->detach($drinkId);
     }
 
+    public function addDrinkToTrace($drinkId)
+    {
+        $member = Member::find(Session::get('loginId'));
+        $member->trace()->attach($drinkId, ['date' => Carbon::now('Asia/Taipei')]);
+    }
+
+    public function deleteDrinkFromTrace($drinkId)
+    {
+        $member = Member::find(Session::get('loginId'));
+        $member->trace()->detach($drinkId);
+    }
+
     public function addComment($drinkId)
     {
         $drinkComment = new Comment();
         $member = Member::find(Session::get('loginId'));
         $member->comment()->attach($drinkId, $drinkComment->getCommentInfo());
-
     }
+
 
     public function orderList()
     {

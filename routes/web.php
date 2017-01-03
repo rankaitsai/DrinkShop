@@ -36,12 +36,17 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get(ROUTE_BASE . '/homepage', 'LogoutController@getLogout');
 
-
     Route::get(ROUTE_BASE . '/homepage/menu', 'DrinkController@getAllDrinks');
 
-    Route::get(ROUTE_BASE . '/homepage/menu/{drinkId}', 'MemberController@getDrinksToShoppingCart');
-
+    Route::get(ROUTE_BASE . '/homepage/menu/shoppingcart/{drinkId}', 'MemberController@addDrinksToShoppingCart');
+    Route::get(ROUTE_BASE . '/homepage/personal', 'MemberController@getUserData');
 
     Route::get(ROUTE_BASE . '/homepage/menu/comment/{drinkId}/{drinkName}', 'MemberController@showComment');
     Route::post(ROUTE_BASE . '/homepage/menu/comment/{drinkId}', ['uses' => 'MemberController@getComment', 'as' => 'comment.form']);
+
+
+    Route::get(ROUTE_BASE . '/homepage/menu/trace/{drinkId}', 'MemberController@addDrinksToTrace');
+    //Route::get(ROUTE_BASE . '/homepage/personal/trace', 'MemberController@getTrace');
+    Route::post(ROUTE_BASE . '/homepage/menu/searchResult', 'DrinkController@searchDrink');
+
 });

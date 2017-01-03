@@ -30,5 +30,10 @@ class Drink extends Model
     {
         return DB::table('drink')->get();
     }
+
+    public function searchDrink()
+    {
+        return DB::table('drink')->where('name','LIKE','%'.Input::get('drinkName').'%')->get();
+    }
 }
 
