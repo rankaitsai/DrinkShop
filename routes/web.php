@@ -49,4 +49,7 @@ Route::group(['middleware' => ['web']], function() {
     //Route::get(ROUTE_BASE . '/homepage/personal/trace', 'MemberController@getTrace');
     Route::post(ROUTE_BASE . '/homepage/menu/searchResult', 'DrinkController@searchDrink');
 
+    Route::get(ROUTE_BASE . '/homepage/personal/deleteDrinkFromShoppingCart/{drinkName}','MemberController@deleteDrinkFromShoppingCart');
+    Route::get(ROUTE_BASE . '/homepage/personal/deleteDrinkFromTrace/{drinkName}','MemberController@deleteDrinkFromTrace');
+
 });

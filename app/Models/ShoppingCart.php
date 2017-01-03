@@ -19,4 +19,13 @@ class ShoppingCart extends Model
             ->where('member.id','=',Session::get('loginId'))
             ->get();
     }
+
+    public function deleteDrink($drinkName)
+    {
+        return DB::table('shopping_cart')
+            ->join('member','member.id','=','shopping_cart.memberId')
+            ->join('drink','drink.id','=','shopping_cart.drinkId')
+            ->where('drink.name','=',$drinkName)
+            ->delete();
+    }
 }

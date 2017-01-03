@@ -61,7 +61,6 @@ class Member extends Model
         $member->comment()->attach($drinkId, $drinkComment->getCommentInfo());
     }
 
-
     public function orderList()
     {
         return $this->hasMany('App\Models\OrderList');

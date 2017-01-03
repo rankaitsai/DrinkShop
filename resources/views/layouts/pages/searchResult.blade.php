@@ -30,7 +30,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                         {{--圖片要放入public裡面因為要從檔案載入到網頁--}}
-                        <img src="{{ $drink->image }}" alt="" style="height: 152px; width: 130px;">
+                        <img src="{{ '../' . $drink->image }}" alt="" style="height: 152px; width: 130px;">
                         <div class="caption">
                             <h4><strong>{{ $drink->name }}({{$drink->price}})</strong></h4>
                             <p>{{ $drink->description }}</p>

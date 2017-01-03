@@ -59,6 +59,23 @@ class MemberController extends Controller
         return redirect()->back();
     }
 
+    public function deleteDrinkFromShoppingCart($drinkName)
+    {
+        $shoppingCart = new ShoppingCart();
+        $shoppingCart->deleteDrink($drinkName);
+        return redirect()->back();
+    }
+
+    public function deleteDrinkFromTrace($drinkName)
+    {
+        $shoppingCart = new Trace();
+        $shoppingCart->deleteDrink($drinkName);
+        return redirect()->back();
+    }
+
+
+
+
     public function getUserData()
     {
         $shoppingCartDrinks = $this->getShoppingCart();

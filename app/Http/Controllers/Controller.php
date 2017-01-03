@@ -11,4 +11,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+        // show all views
+        view()->share('calcCost', 0);
+    }
 }
