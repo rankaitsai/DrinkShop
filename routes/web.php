@@ -42,6 +42,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::get(ROUTE_BASE . '/homepage/menu/{drinkId}', 'MemberController@getDrinksToShoppingCart');
 
 
-    Route::get(ROUTE_BASE . '/homepage/menu/comment/{drinkId}', 'MemberController@showComment');
-    Route::post(ROUTE_BASE . '/homepage/menu/comment', ['uses' => 'MemberController@getComment', 'as' => 'comment.form']);
+    Route::get(ROUTE_BASE . '/homepage/menu/comment/{drinkId}/{drinkName}', 'MemberController@showComment');
+    Route::post(ROUTE_BASE . '/homepage/menu/comment/{drinkId}', ['uses' => 'MemberController@getComment', 'as' => 'comment.form']);
 });

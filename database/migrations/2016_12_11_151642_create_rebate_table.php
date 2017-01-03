@@ -15,9 +15,9 @@ class CreateRebateTable extends Migration
     {
         Schema::create('rebate', function (Blueprint $table) {
             $table->integer('discountId')->unsigned();
-            $table->foreign('discountId')->references('DiscountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('discountId')->references('discountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('orderListId')->unsigned();
-            $table->foreign('orderListId')->references('Id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('orderListId')->references('id')->on('order_list')->onDelete('cascade')->onUpdate('cascade');
             $table->primary(['discountId','orderListId']);
         });
     }

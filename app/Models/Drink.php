@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Drink extends Model
 {
     protected $table = 'drink';
+    public $timestamps = false;
 
     public function orderList()
     {
@@ -27,13 +29,6 @@ class Drink extends Model
     public function getAllDrinks()
     {
         return DB::table('drink')->get();
-    }
-
-    public function addComment()
-    {
-        $this->stars = Input::get('stars');
-        $this->description = Input::get('description');
-        $this->save();
     }
 }
 

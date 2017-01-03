@@ -16,7 +16,7 @@ class CreateDrinkInfoTable extends Migration
         Schema::create('drink_info', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('drinkId')->unsigned();
-            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('drinkId')->references('id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
             $table->string('sugar');
             $table->string('temperature');
             $table->string('addition')->nullable(true);

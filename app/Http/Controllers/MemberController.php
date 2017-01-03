@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
 use App\Models\Member;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
@@ -9,16 +11,17 @@ use Illuminate\Support\Facades\Session;
 
 class MemberController extends Controller
 {
-    public function showComment($drinkId)
+    public function showComment($drinkId,$drinkName)
     {
-        return view('layouts.pages.comment')->with('drinkId',$drinkId);
+        return view('layouts.pages.comment')->with('drinkId',$drinkId)->with('drinkName', $drinkName);
     }
 
-    public function getComment($drinkId)
+    // 加入評論到database
+    public function getComment(CommentRequest $request, $drinkId)
     {
-        $memberComment = new Member();
-        $memberComment->addComment($drinkId);
-        return redirect()->back();
+        $member = new Member();
+        $member->addComment($drinkId);
+        return redirect()->back()->with('commentSuccess','感謝您的評論');
     }
 
     // 判斷購物車是否存在同筆資料
@@ -39,5 +42,12 @@ class MemberController extends Controller
     public function addDrinksToTrace()
     {
 
+    }
+
+    public function getShoppingCart()
+    {
+        $shoppingCart = new ShoppingCart();
+        $shoppingCart->getShoppingCart();
+        return view('layouts.pages.personal', ['']);
     }
 }

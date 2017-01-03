@@ -15,9 +15,9 @@ class CreateHistoryExploreTable extends Migration
     {
         Schema::create('history_explore', function (Blueprint $table) {
             $table->integer('memberId')->unsigned();
-            $table->foreign('memberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('memberId')->references('id')->on('member')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('drinkId')->unsigned();
-            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('drinkId')->references('id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
             $table->primary(['memberId','drinkId']);
         });
     }

@@ -37,7 +37,6 @@
                             <th>飲料價格</th>
                         </tr>
                     </thead>
-
                     <tbody>
                             <tr>
                                 <td class="hidden-phone">johnny</td>

@@ -16,7 +16,7 @@ class CreateOrderListTable extends Migration
         Schema::create('order_list', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('memberId')->unsigned();
-            $table->foreign('memberId')->references('Id')->on('member')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('memberId')->references('id')->on('member')->onDelete('cascade')->onUpdate('cascade');
             $table->string('drinkName');
             $table->integer('drinkPrice');
             $table->datetime('date');

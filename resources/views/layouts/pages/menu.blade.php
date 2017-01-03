@@ -66,7 +66,7 @@
                                     <p>
                                         @if(\Illuminate\Support\Facades\Session::get('validate') == 'success')
                                             <a href="javascript:void(0);" id="trace" class="btn btn-default" role="button" style="color: red; font-size: 14px;">&#9829</a>
-                                            <a href="{{ action('MemberController@showComment',$drink->id) }}" class="btn btn-default" role="button">評論</a>
+                                            <a href="{{ action('MemberController@showComment',['drinkId' => $drink->id, 'drinkName' => $drink->name]) }}" class="btn btn-default" role="button">評論</a>
                                             <a href="{{ action('MemberController@getDrinksToShoppingCart',$drink->id) }}" class="btn btn-default" role="button">加入購物車</a>
                                             <a href="javascript:void(0);" class="btn btn-primary" role="button">購買</a>
                                         @else

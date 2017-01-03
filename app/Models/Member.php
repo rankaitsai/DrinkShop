@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class Member extends Model
 {
     //$table 對應到資料庫中的member資料表
     protected  $table = 'member';
-    //protected  $fillable = array['account','password','name','phone','email'];
     public $timestamps = false;
     /*
      * ORM object relational mapping
@@ -44,10 +43,10 @@ class Member extends Model
 
     public function addComment($drinkId)
     {
-        $drinkComment = new Drink();
+        $drinkComment = new Comment();
         $member = Member::find(Session::get('loginId'));
-        $member->comment()->attach($drinkId);
-        $drinkComment->addComment();
+        $member->comment()->attach($drinkId, $drinkComment->getCommentInfo());
+
     }
 
     public function orderList()
@@ -57,7 +56,7 @@ class Member extends Model
 
     public function comment()
     {
-        return $this->belongsToMany('App\Models\Drink','comment','memberId','drinkId')->wthPivot('date','star','description');
+        return $this->belongsToMany('App\Models\Drink','comment','memberId','drinkId')->withPivot('date','stars','description');
     }
 
     public function trace()

@@ -23,17 +23,17 @@
             <div class="top">
                 <h3>評論</h3>
             </div>
-            <form action="{{ route('comment.form') }}" method="post" class = "form-horizontal" enctype="multipart/form-data">
+            <form action="{{ route('comment.form',$drinkId) }}" method="post" class = "form-horizontal" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class = "form-group">
                     <label for="drinkName" class="col-sm-4 control-label">飲料名稱:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="drinkName" value="{{ $drinkId }}"/>
+                        <input type="text" class="form-control" name="drinkName" value="{{ $drinkName }}" disabled/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="commentStars" class="col-sm-4 control-label"><span style="color:red">*</span>評價等級:</label>
+                    <label for="stars" class="col-sm-4 control-label"><span style="color:red">*</span>評價等級:</label>
                     <label class="radio-inline">
                         <input type="radio" name="stars" id="radio" value="非常好喝" /> 非常好喝
                     </label>
@@ -66,6 +66,11 @@
                             @endforeach
                         </ul>
                     </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::has('commentSuccess'))
+                    <p class="bg-success" style="text-align: center;">{{\Illuminate\Support\Facades\Session::get('commentSuccess')}}</p>
+                    {{ header('Refresh:1') }}
                 @endif
 
                 <div class="button">

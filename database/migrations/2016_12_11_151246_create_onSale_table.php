@@ -15,9 +15,9 @@ class CreateOnSaleTable extends Migration
     {
         Schema::create('on_sale', function (Blueprint $table) {
             $table->integer('drinkId')->unsigned();
-            $table->foreign('drinkId')->references('Id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('drinkId')->references('id')->on('drink')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('discountId')->unsigned();
-            $table->foreign('discountId')->references('DiscountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('discountId')->references('discountId')->on('discount')->onDelete('cascade')->onUpdate('cascade');
             $table->primary(['drinkId','discountId']);
         });
     }
