@@ -68,13 +68,10 @@ class MemberController extends Controller
 
     public function deleteDrinkFromTrace($drinkName)
     {
-        $shoppingCart = new Trace();
-        $shoppingCart->deleteDrink($drinkName);
+        $trace = new Trace();
+        $trace->deleteDrink($drinkName);
         return redirect()->back();
     }
-
-
-
 
     public function getUserData()
     {

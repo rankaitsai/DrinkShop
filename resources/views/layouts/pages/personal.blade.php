@@ -60,7 +60,8 @@
                 @if(count($shoppingCartDrinks) == 0)
                     <button class="btn btn-primary pull-right" disabled>結帳</button>
                 @else
-                    <button href="{{ action('OrderListController@checkOut',$calcCost) }}" class="btn btn-primary pull-right">結帳</button>
+                    <button href="" class="btn btn-primary pull-right">結帳</button>
+                    {{--<button href="{{ action('OrderListController@checkOut',$calcCost) }}" class="btn btn-primary pull-right">結帳</button>--}}
                 @endif
                     <h4 class="pull-right">共 {{ $calcCost }} 元&nbsp;</h4>
             </div>

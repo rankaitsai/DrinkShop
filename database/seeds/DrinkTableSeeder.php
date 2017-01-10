@@ -14,7 +14,6 @@ class DrinkTableSeeder extends Seeder
     {
 
         DB::table('drink')->insert([
-
             'name' => '珍珠奶茶',
             'price' => '40',
             'description' => '好喝+',

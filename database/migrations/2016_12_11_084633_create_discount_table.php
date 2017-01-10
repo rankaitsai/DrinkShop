@@ -16,8 +16,8 @@ class CreateDiscountTable extends Migration
         Schema::create('discount', function (Blueprint $table) {
             $table->increments('discountId');
             $table->string('type');
-            $table->datetime('start_Date');
-            $table->datetime('end_Date');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
         });
     }
 

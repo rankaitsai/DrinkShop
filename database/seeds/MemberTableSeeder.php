@@ -30,7 +30,7 @@ class MemberTableSeeder extends Seeder
             'sex' => 'girl',
             'phone' => '0939408748',
             'email' => 'test@gmail.com',
-            'address' => '桃園市'
+            'address' => '桃園市',
         ]);
 
         DB::table('member')->insert([
