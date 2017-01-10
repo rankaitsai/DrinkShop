@@ -26,6 +26,7 @@ class Trace extends Model
             ->join('member','member.id','=','trace.memberId')
             ->join('drink','drink.id','=','trace.drinkId')
             ->where('drink.name','=',$drinkName)
+            ->where('member.id','=',Session::get('loginId'))
             ->delete();
     }
 }

@@ -25,6 +25,7 @@ class ShoppingCart extends Model
         return DB::table('shopping_cart')
             ->join('member','member.id','=','shopping_cart.memberId')
             ->join('drink','drink.id','=','shopping_cart.drinkId')
+            ->where('member.id','=',Session::get('loginId'))
             ->where('drink.name','=',$drinkName)
             ->delete();
     }
